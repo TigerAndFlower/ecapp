@@ -89,7 +89,7 @@
           </div>
         </div>
         <div class="sevenBottom">
-          <div class="listWrap">
+          <div class="listWrap" ref="listWwrap">
             <ul>
               <li>
                 <div class="pro-block">
@@ -309,9 +309,17 @@
 
 <script>
   import swipe from "../swipe/swipe.vue"
-  export default {
+  import BScroll from 'better-scroll'
+  export default{
     components: {
     'swipe': swipe
+    },
+    mounted(){
+      let scroll = new BScroll(this.$refs.listWwrap,{
+        scrollX: true,
+        scrollY: false,
+        click: true
+      })
     }
   }
 </script>
@@ -434,12 +442,13 @@
         margin-top: -10/@rem;
         padding-left: 5/@rem;
         padding-bottom: 10/@rem;
+        overflow: hidden;
         .listWrap{
           width: 100%;
           height: 100%;
           overflow: hidden;
           >ul{
-            width: 1000%;
+            width: 300%;
             height: 100%;
             >li{
               float: left;
